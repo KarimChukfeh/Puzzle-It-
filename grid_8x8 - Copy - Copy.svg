@@ -50,11 +50,11 @@
      inkscape:window-height="841"
      id="namedview34"
      showgrid="false"
-     showguides="true"
+     showguides="false"
      inkscape:guide-bbox="true"
-     inkscape:zoom="1.3426103"
-     inkscape:cx="196.59253"
-     inkscape:cy="1513.9077"
+     inkscape:zoom="1.2831313"
+     inkscape:cx="1144.8715"
+     inkscape:cy="1845.2497"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -130,13 +130,5 @@
        id="path18-1"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccsccsccsccsccscscc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.001in;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0.00310996,830.00112
-          C 38.10891,832.64093 125.47112,820.07949 100.42802,796.09902
-          c -97.82871,-85.51639 78.17001,-71.51869 57.79004,-11.58819 -7.59963,34.25712 24.99964,45.81497 65.73724,45.78413"
-       id="path18-1-9"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccc" />
   </g>
 </svg>

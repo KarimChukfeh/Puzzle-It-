@@ -18,8 +18,8 @@ imgMargin = "0.002"
 '''
 PLAY W/THESE 4 PARAMETERS
 '''
-imgWidth = "3.0"
-imgHeight = "3.0"
+imgWidth = "3.7"
+imgHeight = "3.7"
 canvasWidth = "25"
 canvasHeight = "25"
 
@@ -42,6 +42,38 @@ curvesUP = [''' \nc 35.013,-0.0629 61.99073,-2.28755 46.25437,-31.19439 -30.4091
         ''' \nc 38.219,-0.73081 81.8561,-6.65234 46.2543,-31.19439 -51.8606,-35.74999 109.7698,-58.12639 66.7587,0.36998 -32.5572,44.27886 28.1091,28.06428 36.8602,28.75605 ''',
         ''' \nc 35.016,-0.0643 100.5326,-9.37668 46.2543,-31.19439 -53.4717,-21.49348 101.9674,-55.48201 57.7901,-11.58819 -38.9874,38.73724 37.0777,40.02245 44.5798,41.40599 ''']
 
+'''  <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.00096099in;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 0.03569412,285.90326 C 37.912144,287.54979 155.11002,270.06953 142.49678,240.12384 118.0558,182.09738 259.8183,156.89358 195.86421,228.53525 c -35.39911,39.65426 123.55364,65.19187 143.59314,57.28368"
+           id="h-path-2"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cssc" />'''
+
+curves2UP = ['''
+ c 98.3169,-21.95184 178.24682,14.93883 152.76781,-37.6291 -44.51166,-91.8358 99.81787,-120.78511 64.86817,0.36998 -18.15969,62.95161 116.57142,39.28789 121.81862,37.97054"
+id="h-path-003"
+inkscape:connector-curvature="0"
+sodipodi:nodetypes="cssc" />''',
+
+'''
+ c 48.6553,0.79401 215.6431,-3.50535 142.305,-48.675 -50.0721,-30.83996 95.1816,-107.89372 56.9562,-11.58823 -32.4874,81.84907 141.49301,61.4489 140.61321,60.26997"
+id="h-path-004"
+inkscape:connector-curvature="0"
+sodipodi:nodetypes="cssc" />'''   ,
+
+'''
+ c 33.216,-0.063 177.2317,16.71459 153.0215,-35.13401 -29.4268,-63.02033 99.0201,-58.38662 39.7833,-11.06001 -54.4227,43.48032 139.055,44.11883 146.1872,45.50237"
+id="h-path-005"
+inkscape:connector-curvature="0"
+sodipodi:nodetypes="cssc" />''',
+
+'''
+ c 37.1864,-0.033 187.8483,4.40932 165.771,-45.45327 -27.3125,-61.6864 88.3127,-63.10268 61.3904,-12.31013 -42.2357,79.6831 103.8432,57.05312 111.8323,58.10935"
+id="h-path-006"
+inkscape:connector-curvature="0"
+sodipodi:nodetypes="cssc" />'''
+]
+
 def generateHeader():
     gridHeader = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n" \
     + " width=\"" + canvasWidth+unit + "\"\n" \
@@ -62,74 +94,20 @@ def generatePaths():
                 " id=\"layer1\"\n" + \
                 " transform=\"translate(0,0)\">\n"
 
-    for i in range(columns+1):
-        if i == 0:
-            pathStart = "0 0 "
-            pathEnd = canvasHeight
-            path1 = "<path style=\"fill:none; fill-rule:evenodd; stroke:#000000;" + \
-                   " stroke-width:0.001in; stroke-linecap:butt; stroke-linejoin:miter;" + \
-                   " stroke-opacity:1; stroke-miterlimit:4; stroke-dasharray:none\"\n" + \
-                   " d = \"M" + pathStart + "v " + str(int(pathEnd)*90) + "\"\n" + \
-                   " id = \"v-path" + "-left" + "\"\n" + \
-                   " inkscape:connector-curvature=\"0\"\n" + "/>\n"
+    for i in range(rows):
+        for j in range(columns):
+            xy = str(90*float(imgWidth)*i) + "," + str(j*90*float(imgHeight))
+            path = '''
+                        <path
+                           style="fill:none;fill-rule:evenodd;
+                           stroke:#000000;stroke-width:0.00096099in;
+                           stroke-linecap:butt;stroke-linejoin:miter;
+                           stroke-miterlimit:4;stroke-dasharray:none;
+                           stroke-opacity:1"
+                        ''' + \
+                        " d = \"m " + xy + " " + random.choice(curves2UP)
 
-            pathStart = str(int(canvasWidth)*90) + " 0 "
-            pathEnd = canvasHeight
-            path2 = "<path style=\"fill:none; fill-rule:evenodd; stroke:#000000;" + \
-                   " stroke-width:0.001in; stroke-linecap:butt; stroke-linejoin:miter;" + \
-                   " stroke-opacity:1; stroke-miterlimit:4; stroke-dasharray:none\"\n" + \
-                   " d = \"M" + pathStart + " v " + str(int(pathEnd)*90-1) + "\"\n" + \
-                   " id = \"v-path" + "-right" + "\"\n" + \
-                   " inkscape:connector-curvature=\"0\"\n" + "/>\n"
-            gridPaths += path1 + path2
-        else:
-            pathStart = str(i*float(imgWidth)*90) + " 0"
-            pathEnd = canvasHeight
-            path = "<path style=\"fill:none; fill-rule:evenodd; stroke:#000000;" + \
-                   " stroke-width:0.001in; stroke-linecap:butt; stroke-linejoin:miter;" + \
-                   " stroke-opacity:1; stroke-miterlimit:4; stroke-dasharray:none\"\n" + \
-                   " d = \"M" + pathStart + " v " + str(int(pathEnd)*90-1) + "\"\n" + \
-                   " id = \"v-path-" + str(i) + "\"\n" + \
-                   " inkscape:connector-curvature=\"0\"\n" + "/>\n"
             gridPaths += path
-
-    for i in range(rows+1):
-        if i == 0:
-            pathStart = "0 0 "
-            pathEnd = canvasWidth
-            path1 = "<path style=\"fill:none; fill-rule:evenodd; stroke:#000000;" + \
-                   " stroke-width:0.001in; stroke-linecap:butt; stroke-linejoin:miter;" + \
-                   " stroke-opacity:1; stroke-miterlimit:4; stroke-dasharray:none\"\n" + \
-                   " d = \"M" + pathStart + "h " + str(int(pathEnd)*90) + "\"\n" + \
-                   " id = \"h-path" + "-top" + "\"\n" + \
-                   " inkscape:connector-curvature=\"0\"\n" + "/>\n"
-
-            pathStart =  "0 " + str(int(canvasHeight)*90)
-            pathEnd = canvasWidth
-            path2 = "<path style=\"fill:none; fill-rule:evenodd; stroke:#000000;" + \
-                   " stroke-width:0.001in; stroke-linecap:butt; stroke-linejoin:miter;" + \
-                   " stroke-opacity:1; stroke-miterlimit:4; stroke-dasharray:none\"\n" + \
-                   " d = \"M" + pathStart + " h " + str(int(pathEnd)*90-1) + "\"\n" + \
-                   " id = \"h-path" + "-bot" + "\"\n" + \
-                   " inkscape:connector-curvature=\"0\"\n" + "/>\n"
-            gridPaths += path1 + path2
-        else:
-            pathStart = "M " + "0," str(i*float(width)*90)
-            halfInterval = 90*float(imgWidth)/5
-            mString = pathStart + str(halfInterval)+"," +  str(i*float(imgHeight)*90)
-            curve = random.choice(curvesUP)
-            print pathStart
-            print str(halfInterval)
-            print str(i*float(imgHeight)*90)
-            path = "<path style=\"fill:none; fill-rule:evenodd; stroke:#000000;" + \
-                   " stroke-width:0.001in; stroke-linecap:butt; stroke-linejoin:miter;" + \
-                   " stroke-opacity:1; stroke-miterlimit:4; stroke-dasharray:none\"\n" + \
-                   " d =  \"" + mString + curve + "\nl " + str(halfInterval*2) + \
-                                curve + "\nl " + str(halfInterval*2) + ",0\"\n" + \
-                   " id = \"h-path-" + str(i) + "\"\n" + \
-                   " inkscape:connector-curvature=\"0\"\n" + "/>\n"
-            gridPaths += path
-
 
     return gridPaths + "\n</g>\n"+ "</svg>"
 
